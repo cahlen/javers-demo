@@ -1,0 +1,16 @@
+version: '3.2'
+
+services:
+  postgres:
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    # environment:
+      # - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      # - ./pgdata:/var/lib/postgresql/data/pgdata
+      - ./docker/postgres/initdb:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+
